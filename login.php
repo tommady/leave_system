@@ -13,9 +13,8 @@ if (isset($_POST["submit"])) {
         $username = mysqli_real_escape_string($db, $username);
         $password = mysqli_real_escape_string($db, $password);
 
-        $sql = "SELECT id FROM user WHERE name='$username' and password='$password'";
+        $sql = "SELECT id FROM users WHERE name='$username' and password='$password'";
         $result = mysqli_query($db, $sql);
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
         if (mysqli_num_rows($result) == 1) {
             $_SESSION['username'] = $username;
@@ -25,3 +24,5 @@ if (isset($_POST["submit"])) {
         }
     }
 }
+
+mysqli_close($db);
